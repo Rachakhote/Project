@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="management_action">
+            <field name="name">Vehicles</field>
+            <field name="res_model">vehicle.management</field>
+            <field name="view_mode">kanban,list</field>
+        </record>
+
+            <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="vehicle_root" name="Vehicle" sequence="10"/>
+        <menuitem id="vehicle_management_root" name="Management" parent="vehicle_root" sequence="10"/>
+        <menuitem id="vehicle_request" name="Request" parent="vehicle_management_root" action="management_action" sequence="10"/>
+
+    </data>
+</odoo>
