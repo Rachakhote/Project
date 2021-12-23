@@ -2,16 +2,74 @@
 <odoo>
     <data>
 
-        <record model="ir.actions.act_window" id="management_action">
-            <field name="name">Vehicles</field>
-            <field name="res_model">vehicle.management</field>
-            <field name="view_mode">kanban,list</field>
+        <record id="management_tree" model="ir.ui.view">
+            <field name="name">vehicle.management.tree</field>
+            <field name="model">vehicle.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="driver_id"/>
+                    <field name="objective"/>
+                    <field name="location"/>
+                    <field name="distance"/>
+                    <field name="travel_date"/>
+                    <field name="return_date"/>
+                    <field name="oil_budget"/>
+                    <field name="n_teacher"/>
+                    <field name="n_student"/>
+                    <field name="note"/>
+                    <field name="user_id"/>
+<!--                    <field name="state_id"/>-->
+                </tree>
+            </field>
         </record>
 
-            <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-        <menuitem id="vehicle_root" name="Vehicle" sequence="10"/>
-        <menuitem id="vehicle_management_root" name="Management" parent="vehicle_root" sequence="10"/>
-        <menuitem id="vehicle_request" name="Request" parent="vehicle_management_root" action="management_action" sequence="10"/>
+        <record id="management_form" model="ir.ui.view">
+            <field name="name">vehicle.management.form</field>
+            <field name="model">vehicle.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="driver_id"/>
+                                <field name="objective"/>
+                            </group>
+                            <group>
+                                <field name="location"/>
+                                <field name="distance"/>
+                                <field name="travel_date"/>
+                                <field name="return_date"/>
+                            </group>
+                            <group>
+                                <field name="oil_budget"/>
+                                <field name="n_teacher"/>
+                                <field name="n_student"/>
+                                <field name="note"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+<!--                                <field name="state_id"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="management_action">
+            <field name="name">Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vehicle.management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="vehicle_root" name="Vehicle" action="management_action" sequence="10"/>
+
 
     </data>
 </odoo>

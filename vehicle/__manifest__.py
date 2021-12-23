@@ -3,7 +3,7 @@
 {
     'name': "Vehicle Module",
     'version': '1.0',
-    'depends': ['base'],
+    'depends': ['base', 'fleet'],
     'author': "Author Name",
     'category': 'Category',
     'description': """
@@ -11,6 +11,7 @@
     """,
     # data files always loaded at installation
     'data': [
+        'security/ir.model.access.csv',
         'views/vehicle_management.xml',
     ],
     # data files containing optionally loaded demonstration data
