@@ -2,7 +2,29 @@
 <odoo>
     <data>
 
-        <record id="management_tree" model="ir.ui.view">
+<!--        <record id="view_management_kanban" model="ir.ui.view">-->
+<!--            <field name="name">vehicle.management.kanban</field>-->
+<!--            <field name="model">vehicle.management</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <kanban>-->
+<!--                    <field name="name"/>-->
+<!--                    <templates>-->
+<!--                        <t t-name="kanban-box">-->
+<!--                            <ul>-->
+<!--                                <il>-->
+<!--                                    <field name="name"/>-->
+<!--                                </il>-->
+<!--                                <il>-->
+<!--                                    <field name="driver_id"/>-->
+<!--                                </il>-->
+<!--                            </ul>-->
+<!--                        </t>-->
+<!--                    </templates>-->
+<!--                </kanban>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="view_management_tree" model="ir.ui.view">
             <field name="name">vehicle.management.tree</field>
             <field name="model">vehicle.management</field>
             <field name="arch" type="xml">
@@ -25,7 +47,7 @@
             </field>
         </record>
 
-        <record id="management_form" model="ir.ui.view">
+        <record id="view_management_form" model="ir.ui.view">
             <field name="name">vehicle.management.form</field>
             <field name="model">vehicle.management</field>
             <field name="arch" type="xml">
@@ -56,7 +78,28 @@
                             </group>
                         </group>
                     </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
                 </form>
+            </field>
+        </record>
+
+        <record id="view_management_search" model="ir.ui.view">
+            <field name="name">vehicle.management.search</field>
+            <field name="model">vehicle.management</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="distance"/>
+                    <field name="n_teacher"/>
+                    <field name="n_student"/>
+                </search>
             </field>
         </record>
 
@@ -64,7 +107,7 @@
             <field name="name">Request</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vehicle.management</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,kanban,form</field>
         </record>
 
         <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
