@@ -2,7 +2,7 @@
 import datetime
 
 from datetime import datetime, timedelta
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class VehicleManagement(models.Model):
@@ -10,7 +10,7 @@ class VehicleManagement(models.Model):
     _description = 'Vehicle Management'
     _inherit = 'mail.thread', 'mail.activity.mixin'
 
-    name = fields.Char(string='Order Number', track_visibility='onchange')
+    name = fields.Char(string='Order Number', track_visibility='onchange', default=None)
     partner_id = fields.Many2one('fleet.vehicle', string='Model', required=True, track_visibility='onchange')
     driver_id = fields.Many2one('res.users', string='Driver', required=True, track_visibility='onchange')
     objective = fields.Char(string='Objective', required=True, track_visibility='onchange')
@@ -31,4 +31,9 @@ class VehicleManagement(models.Model):
 
     # state_id = fields.Many2one('maintenance', string='State', required=True)
 
-
+    @api.model
+    def create(self, vals):
+        new_running_number = self.env['ir.sequence'].next_by_code('vehicle.management.sequence')
+        vals['name'] = new_running_number
+        record = super(VehicleManagement, self).create(vals)
+        return record

@@ -12,7 +12,8 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
-        'views/vehicle_management.xml',
+        'data/sequence.xml',
+        'views/vehicle_management.xml'
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
