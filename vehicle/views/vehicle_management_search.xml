@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- View Search -->
+        <record id="view_management_search" model="ir.ui.view">
+            <field name="name">vehicle.management.search</field>
+            <field name="model">vehicle.management</field>
+            <field name="arch" type="xml">
+                <search string="Vehicle Management Search">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="objective"/>
+                    <field name="driver_id"/>
+                    <field name="user_id"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

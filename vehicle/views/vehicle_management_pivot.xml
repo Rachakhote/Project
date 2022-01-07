@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- View Pivot -->
+        <record id="view_management_pivot" model="ir.ui.view">
+            <field name="name">vehicle.management.pivot</field>
+            <field name="model">vehicle.management</field>
+            <field name="arch" type="xml">
+                <pivot string="Vehicle Management Pivot" sample="1">
+                    <field name="model_id" type="row"/>
+                    <field name="user_id" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+    </data>
+</odoo>
