@@ -5,7 +5,7 @@
         <record id="seq_vehicle_management" model="ir.sequence">
             <field name="name">Vehicle Management Sequence</field>
             <field name="code">vehicle.management.sequence</field>
-            <field name="prefix">VM</field>
+            <field name="prefix">PO</field>
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
         </record>

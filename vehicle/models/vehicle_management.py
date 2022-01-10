@@ -13,20 +13,55 @@ class VehicleManagement(models.Model):
     name = fields.Char(string='Order Number', tracking=True, default='NEW', readonly=True)
     user_id = fields.Many2one('res.users', string='User', required=True, tracking=True,
                               default=lambda self: self.env.company)
-    objective = fields.Char(string='Objective', required=True, tracking=True)
-    teacher = fields.Integer(string='Number of Teachers', required=True, tracking=True)
-    student = fields.Integer(string='Number of Students', required=True, tracking=True)
+    position = fields.Char(string='ตำแหน่ง', required=True, tracking=True)
+    agency = fields.Char(string='หน่วยงาน', required=True, tracking=True)
+    objective = fields.Char(string='วัตถุประสงค์', required=True, tracking=True)
+    teacher_number = fields.Integer(string='จำนวนอาจารย์ผู้ร่วมเดินทาง', tracking=True)
+    student_number = fields.Integer(string='จำนวนนักศึกษาผู้ร่วมเดินทาง', tracking=True)
     model_id = fields.Many2one('fleet.vehicle', string='Model', required=True, tracking=True)
     image_128 = fields.Image(related='model_id.image_128', readonly=True)
-    location = fields.Text(string='Location', required=True, tracking=True)
-    distance = fields.Float(string='Distance', required=True, tracking=True)
-    budget = fields.Selection([('budget', 'งบประมาณแผ่นดิน'), ('statement', 'งบรายได้'), ('other', 'อื่นๆ')],
-                              required=True, tracking=True)
-    start_date = fields.Datetime(string='Start Date', required=True, tracking=True,
+    location = fields.Text(string='สถานที่', required=True, tracking=True)
+    distance = fields.Float(string='ระยะทางไป-กลับ', required=True, tracking=True)
+    budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statements', 'งบรายได้'), ('other', 'อื่นๆ')],
+                              string='ค่าน้ำมันเชื้อเพลิง', required=True, tracking=True)
+    start_date = fields.Datetime(string='วันเวลาในการออกเดินทาง', tracking=True,
                                  default=datetime.now().strftime('%Y-%m-%d %H:%M'))
-    end_date = fields.Datetime(string='End Date', required=True, tracking=True,
+    end_date = fields.Datetime(string='วันเวลาในการเดินทางกลับ', tracking=True,
                                default=datetime.now().strftime('%Y-%m-%d %H:%M'))
-    driver_id = fields.Many2one('res.users', string='Driver', required=True, tracking=True)
+    responsible_person = fields.Char(string='ผู้รับผิดชอบควบคุมในการใช้รถยนต์', tracking=True)
+    phone_number = fields.Char(string='เบอร์โทรศัพท์', tracking=True)
+    office_number = fields.Char(string='เบอร์สำนักงาน', tracking=True)
+
+    record = fields.Selection([('approve', 'เห็นควรอนุมัติ'), ('disapproved', 'ไม่เห็นควรอนุมัติ'), ('consider', 'โปรดพิจารณา')],
+                              string='บันทึก', required=True, tracking=True)
+    driver_id = fields.Many2one('res.users', string='พนักงานขับรถ', tracking=True)
+    car_attendant = fields.Char(string='พนักงานประจำรถ', tracking=True)
+    administrative_staff = fields.Many2one('res.users', string='ลงชื่อ', required=True, tracking=True)
+    approve_date = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
+
+    offer = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')],
+                             string='เสนอ', required=True, tracking=True)
+    reason = fields.Char(string='เพราะ', tracking=True)
+    department_head = fields.Many2one('res.users', string='ลงชื่อ', required=True, tracking=True)
+    approve_date01 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
+
+    offer_part02 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
+                                    , string='เสนอ', required=True, tracking=True)
+    reason_part02 = fields.Char(string='เพราะ', tracking=True)
+    office_director = fields.Many2one('res.users', string='ลงชื่อ', required=True, tracking=True)
+    approve_date02 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
+
+    offer_part03 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
+                                    , string='เสนอ', required=True, tracking=True)
+    reason_part03 = fields.Char(string='เพราะ', tracking=True)
+    vice_president = fields.Many2one('res.users', string='ลงชื่อ', required=True, tracking=True)
+    approve_date03 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
+
+    offer_part04 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ')], string='เสนอ',
+                                    required=True, tracking=True)
+    reason_part04 = fields.Char(string='เพราะ', tracking=True)
+    chancellor = fields.Many2one('res.users', string='ลงชื่อ', required=True, tracking=True)
+    approve_date04 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'), ('done', 'Done'), ('cancel', 'Cancelled')],
                              string='Status', default='draft')

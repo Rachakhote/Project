@@ -16,9 +16,10 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
                     </header>
                     <sheet>
-                        <field name="name"/>
-                        <field name="image_128" widget='image' class="oe_avatar"/>
-                        <p/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                            <field name="image_128" widget='image' class="oe_avatar"/>
+                        </h1>
                         <div class="oe_title">
                             <label for="model_id"/>
                             <h2>
@@ -28,18 +29,59 @@
                         <p/>
                         <group>
                             <group>
+                                <field name="user_id"/>
+                                <field name="position"/>
+                                <field name="agency"/>
                                 <field name="objective"/>
                                 <field name="location"/>
-                                <field name="distance"/>
-                                <field name="budget"/>
                             </group>
                             <group>
+                                <field name="teacher_number"/>
+                                <field name="student_number"/>
+                                <field name="responsible_person"/>
+                                <field name="phone_number"/>
+                                <field name="office_number"/>
+                            </group>
+                            <group>
+                                <label for="distance"/>
+                                <div class="o_row" name="distance">
+                                    <field name="distance"/>
+                                    <span>km</span>
+                                </div>
+                                <field name="budget" widget="radio"/>
                                 <field name="start_date"/>
                                 <field name="end_date"/>
-                                <field name="teacher"/>
-                                <field name="student"/>
+                            </group>
+                            <group col="2" string="เจ้าหน้าที่ธุรการ">
+                                <field name="record" widget="radio"/>
                                 <field name="driver_id"/>
-                                <field name="user_id"/>
+                                <field name="car_attendant"/>
+                                <field name="administrative_staff"/>
+                                <field name="approve_date"/>
+                            </group>
+                            <group col="2" string="หัวหน้าฝ่ายยานพาหนะ">
+                                <field name="offer" widget="radio"/>
+                                <field name="reason"/>
+                                <field name="department_head"/>
+                                <field name="approve_date01"/>
+                            </group>
+                            <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี">
+                                <field name="offer_part02" widget="radio"/>
+                                <field name="reason_part02"/>
+                                <field name="office_director"/>
+                                <field name="approve_date02"/>
+                            </group>
+                            <group col="2" string="รองอธิการบดีฝ่ายบริหาร">
+                                <field name="offer_part03" widget="radio"/>
+                                <field name="reason_part03"/>
+                                <field name="vice_president"/>
+                                <field name="approve_date03"/>
+                            </group>
+                            <group col="2" string="อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์">
+                                <field name="offer_part04" widget="radio" nolabel="1"/>
+                                <field name="reason_part04"/>
+                                <field name="chancellor"/>
+                                <field name="approve_date04"/>
                             </group>
                         </group>
                     </sheet>
