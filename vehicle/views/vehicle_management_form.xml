@@ -9,11 +9,12 @@
             <field name="arch" type="xml">
                 <form string="Vehicle Management Form">
                     <header>
-                        <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" states="draft" type="object"/>
-                        <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary" states="confirm" type="object"/>
-                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" states="cancel" type="object"/>
-                        <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,done,confirm" type="object"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                        <button id="button_confirm" name="action_authorities" string="Confirm" class="btn-primary" type="object"/>
+<!--                        <button id="button_done" name="action_department head" string="Mark As Done" class="btn-primary" states="authorities" type="object"/>-->
+<!--                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" type="object"/>-->
+                        <button id="button_cancel" name="action_cancel" string="Cancel" type="object"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,authorities,department head,director,vice president,chancellor"/>
                     </header>
                     <sheet>
                         <h1>
@@ -38,7 +39,7 @@
                             <group>
                                 <field name="teacher_number"/>
                                 <field name="student_number"/>
-                                <field name="responsible_person"/>
+                                <field name="responsible"/>
                                 <field name="phone_number"/>
                                 <field name="office_number"/>
                             </group>
@@ -55,31 +56,31 @@
                             <group col="2" string="เจ้าหน้าที่ธุรการ">
                                 <field name="record" widget="radio"/>
                                 <field name="driver_id"/>
-                                <field name="car_attendant"/>
-                                <field name="administrative_staff"/>
+                                <field name="attendant"/>
+                                <field name="authorities"/>
                                 <field name="approve_date"/>
                             </group>
                             <group col="2" string="หัวหน้าฝ่ายยานพาหนะ">
-                                <field name="offer" widget="radio"/>
-                                <field name="reason"/>
+                                <field name="propose" widget="radio"/>
+                                <field name="because"/>
                                 <field name="department_head"/>
                                 <field name="approve_date01"/>
                             </group>
                             <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี">
-                                <field name="offer_part02" widget="radio"/>
-                                <field name="reason_part02"/>
+                                <field name="propose_02" widget="radio"/>
+                                <field name="because_02"/>
                                 <field name="office_director"/>
                                 <field name="approve_date02"/>
                             </group>
                             <group col="2" string="รองอธิการบดีฝ่ายบริหาร">
-                                <field name="offer_part03" widget="radio"/>
-                                <field name="reason_part03"/>
+                                <field name="propose_03" widget="radio"/>
+                                <field name="because_03"/>
                                 <field name="vice_president"/>
                                 <field name="approve_date03"/>
                             </group>
                             <group col="2" string="อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์">
-                                <field name="offer_part04" widget="radio" nolabel="1"/>
-                                <field name="reason_part04"/>
+                                <field name="propose_04" widget="radio"/>
+                                <field name="because_04"/>
                                 <field name="chancellor"/>
                                 <field name="approve_date04"/>
                             </group>
@@ -98,14 +99,14 @@
 
         <!-- Actions Act Window ปุ่มต่างๆ Delete Duplicate -->
         <record model="ir.actions.act_window" id="management_action">
-            <field name="name">Request</field>
+            <field name="name">ระบบจองยานพาหนะ ออนไลน์</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vehicle.management</field>
             <field name="view_mode">tree,kanban,calendar,pivot,form</field>
         </record>
 
         <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-        <menuitem id="vehicle_root" name="Vehicle" action="management_action" sequence="10"/>
+        <menuitem id="vehicle_root" name="Vehicle" action="management_action" sequence="10" />
 
     </data>
 </odoo>
