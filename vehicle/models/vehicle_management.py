@@ -79,7 +79,28 @@ class VehicleManagement(models.Model):
         return record
 
     def button_confirm(self):
-        self.state = 'authorities'
+        for data in self:
+            data.write({
+                'approve_date':  datetime.now().strftime('%Y-%m-%d'),
+                'state': 'authorities',
+            })
+            # ค้นหาข้อมุลจาก Class อื่น
+            # obj = self.env['ชื่อคลาส']
+            # obj.search([เงื่อนไข])
+            # obj.xxxxx
+
+            # เขียนข้อมูลทับ
+            # obj.write({ชื่อฟิลด์: ค่าที่ต้องการ})
+
+            # ลย
+            # obj.unlink(id ของ obj)
+
+            # สร้าง
+            # obj = self.env['ชื่อคลาส']
+            # newobj = obj.create({ชื่อฟิลด์: ค่าที่ต้องการ})
+
+            # self.approve_date = datetime.now().strftime('%Y-%m-%d')
+            # self.state = 'authorities'
 
     def button_authorities(self):
         self.state = 'department head'
