@@ -23,7 +23,7 @@ class VehicleManagement(models.Model):
     location = fields.Text(string='สถานที่', tracking=True)
     distance = fields.Float(string='ระยะทางไป-กลับ', tracking=True)
     budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statements', 'งบรายได้'), ('other', 'อื่นๆ')],
-                              string='ค่าน้ำมันเชื้อเพลิง', tracking=True)
+                              string='ค่าน้ำมันเชื้อเพลิง', tracking=True, default='country_budget')
     start_date = fields.Datetime(string='วันเวลาในการออกเดินทาง', tracking=True,
                                  default=datetime.now().strftime('%Y-%m-%d %H:%M'))
     end_date = fields.Datetime(string='วันเวลาในการเดินทางกลับ', tracking=True,
@@ -62,6 +62,8 @@ class VehicleManagement(models.Model):
     because_04 = fields.Char(string='เพราะ', tracking=True)
     chancellor = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date04 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
+
+    note01 = fields.Char(string='อื่นๆ ระบุ')
 
     state = fields.Selection(
         [('draft', 'ฉบับร่าง'), ('authorities', 'เจ้าหน้าที่'), ('department head', 'หัวหน้าฝ่าย'),
