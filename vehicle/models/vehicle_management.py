@@ -76,8 +76,16 @@ class VehicleManagement(models.Model):
         record = super(VehicleManagement, self).create(vals)
         return record
 
-    def action_authorities(self):
+    def button_confirm(self):
         self.state = 'authorities'
+
+    def button_authorities(self):
+        self.state = 'department head'
+
+    def button_department(self):
+        self.state = 'director'
+
+
 
     # def action_department(self):
     #     self.state = 'department head'
@@ -85,5 +93,5 @@ class VehicleManagement(models.Model):
     # def action_draft(self):
     #     self.state = 'draft'
 
-    def action_cancel(self):
+    def button_cancel(self):
         self.state = 'cancel'

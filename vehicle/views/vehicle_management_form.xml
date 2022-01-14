@@ -9,10 +9,17 @@
             <field name="arch" type="xml">
                 <form string="Vehicle Management Form">
                     <header>
-                        <button id="button_confirm" name="action_authorities" string="Confirm" class="btn-primary" type="object"/>
+                        <button name="button_confirm" string="Confirm"
+                                states="draft"
+                                class="btn-primary" type="object"/>
+                        <button name="button_authorities" string="Confirm"
+                                states="authorities"
+                                class="btn-primary" type="object"/>
 <!--                        <button id="button_done" name="action_department head" string="Mark As Done" class="btn-primary" states="authorities" type="object"/>-->
 <!--                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" type="object"/>-->
-                        <button id="button_cancel" name="action_cancel" string="Cancel" type="object"/>
+                        <button name="button_cancel"
+                                states="draft,authorities"
+                                string="Cancel" type="object"/>
                         <field name="state" widget="statusbar"
                                statusbar_visible="draft,authorities,department head,director,vice president,chancellor"/>
                     </header>
@@ -53,20 +60,20 @@
                                 <field name="start_date"/>
                                 <field name="end_date"/>
                             </group>
-                            <group col="2" string="เจ้าหน้าที่ธุรการ">
+                            <group col="2" string="เจ้าหน้าที่ธุรการ" states="authorities">
                                 <field name="record" widget="radio"/>
                                 <field name="driver_id"/>
                                 <field name="attendant"/>
                                 <field name="authorities"/>
                                 <field name="approve_date"/>
                             </group>
-                            <group col="2" string="หัวหน้าฝ่ายยานพาหนะ">
+                            <group col="2" string="หัวหน้าฝ่ายยานพาหนะ" states="department head">
                                 <field name="propose" widget="radio"/>
                                 <field name="because"/>
                                 <field name="department_head"/>
                                 <field name="approve_date01"/>
                             </group>
-                            <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี">
+                            <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี" states="director">
                                 <field name="propose_02" widget="radio"/>
                                 <field name="because_02"/>
                                 <field name="office_director"/>
