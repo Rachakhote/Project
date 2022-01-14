@@ -7,16 +7,22 @@
             <field name="name">vehicle.management.form</field>
             <field name="model">vehicle.management</field>
             <field name="arch" type="xml">
-                <form string="Vehicle Management Form">
+                <form string="Vehicle">
                     <header>
                         <button id="button_confirm" name="action_authorities" string="Confirm" class="btn-primary" type="object"/>
-<!--                        <button id="button_done" name="action_department head" string="Mark As Done" class="btn-primary" states="authorities" type="object"/>-->
-<!--                        <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" type="object"/>-->
                         <button id="button_cancel" name="action_cancel" string="Cancel" type="object"/>
                         <field name="state" widget="statusbar"
-                               statusbar_visible="draft,authorities,department head,director,vice president,chancellor"/>
+                               statusbar_visible="draft,authorities,department_head,director,vice_president,chancellor"/>
                     </header>
                     <sheet>
+<!--                        <div class="oe_button_box" name="button_box">-->
+<!--                                <button name="toggle_active"-->
+<!--                                        type="object"-->
+<!--                                        class="oe_stat_button"-->
+<!--                                        icon="fa-history">-->
+<!--                                        <field name="history" widget="statinfo" string="History"/>-->
+<!--                                </button>-->
+<!--                        </div>-->
                         <h1>
                             <field name="name" readonly="1"/>
                             <field name="image_128" widget='image' class="oe_avatar"/>
@@ -33,58 +39,89 @@
                                 <field name="user_id"/>
                                 <field name="position"/>
                                 <field name="agency"/>
-                                <field name="objective"/>
-                                <field name="location"/>
-                            </group>
-                            <group>
-                                <field name="teacher_number"/>
-                                <field name="student_number"/>
-                                <field name="responsible"/>
                                 <field name="phone_number"/>
                                 <field name="office_number"/>
                             </group>
                             <group>
+                                <field name="objective"/>
+                                <field name="location"/>
                                 <label for="distance"/>
                                 <div class="o_row" name="distance">
                                     <field name="distance"/>
                                     <span>km</span>
                                 </div>
-                                <field name="budget" widget="radio"/>
+                                <field name="teacher_number"/>
+                                <field name="student_number"/>
+                                <field name="budget" widget="radio" options="{'horizontal': True}"/>
+<!--                                <field name="note"/>-->
                                 <field name="start_date"/>
                                 <field name="end_date"/>
-                            </group>
-                            <group col="2" string="เจ้าหน้าที่ธุรการ">
-                                <field name="record" widget="radio"/>
-                                <field name="driver_id"/>
-                                <field name="attendant"/>
-                                <field name="authorities"/>
-                                <field name="approve_date"/>
-                            </group>
-                            <group col="2" string="หัวหน้าฝ่ายยานพาหนะ">
-                                <field name="propose" widget="radio"/>
-                                <field name="because"/>
-                                <field name="department_head"/>
-                                <field name="approve_date01"/>
-                            </group>
-                            <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี">
-                                <field name="propose_02" widget="radio"/>
-                                <field name="because_02"/>
-                                <field name="office_director"/>
-                                <field name="approve_date02"/>
-                            </group>
-                            <group col="2" string="รองอธิการบดีฝ่ายบริหาร">
-                                <field name="propose_03" widget="radio"/>
-                                <field name="because_03"/>
-                                <field name="vice_president"/>
-                                <field name="approve_date03"/>
-                            </group>
-                            <group col="2" string="อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์">
-                                <field name="propose_04" widget="radio"/>
-                                <field name="because_04"/>
-                                <field name="chancellor"/>
-                                <field name="approve_date04"/>
+                                <field name="responsible"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="เจ้าหน้าที่ธุรการ">
+                                <group>
+                                    <group>
+                                        <field name="record" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="driver_id"/>
+                                        <field name="attendant"/>
+                                        <field name="authorities"/>
+                                        <field name="approve_date"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="หัวหน้าฝ่ายยานพาหนะ">
+                                <group>
+                                    <group>
+                                        <field name="propose" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="because"/>
+                                        <field name="department_head"/>
+                                        <field name="approve_date01"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="ผู้อำนวยการสำนักงานอธิการบดี">
+                                <group>
+                                    <group>
+                                        <field name="propose_02" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="because_02"/>
+                                        <field name="office_director"/>
+                                        <field name="approve_date02"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="รองอธิการบดีฝ่ายบริหาร">
+                                <group>
+                                    <group>
+                                        <field name="propose_03" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="because_03"/>
+                                        <field name="vice_president"/>
+                                        <field name="approve_date03"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์">
+                                <group>
+                                    <group>
+                                        <field name="propose_04" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="because_04"/>
+                                        <field name="chancellor"/>
+                                        <field name="approve_date04"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
 
                     <div class="oe_chatter">

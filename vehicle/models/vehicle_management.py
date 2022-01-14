@@ -22,13 +22,14 @@ class VehicleManagement(models.Model):
     image_128 = fields.Image(related='model_id.image_128', readonly=True)
     location = fields.Text(string='สถานที่', tracking=True)
     distance = fields.Float(string='ระยะทางไป-กลับ', tracking=True)
-    budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statements', 'งบรายได้'), ('other', 'อื่นๆ')],
+    budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statement', 'งบรายได้'), ('other', 'อื่นๆ')],
                               string='ค่าน้ำมันเชื้อเพลิง', tracking=True)
     start_date = fields.Datetime(string='วันเวลาในการออกเดินทาง', tracking=True,
                                  default=datetime.now().strftime('%Y-%m-%d %H:%M'))
     end_date = fields.Datetime(string='วันเวลาในการเดินทางกลับ', tracking=True,
                                default=datetime.now().strftime('%Y-%m-%d %H:%M'))
     responsible = fields.Char(string='ผู้รับผิดชอบควบคุมในการใช้รถยนต์', tracking=True)
+    # note = fields.Char()
     phone_number = fields.Char(string='เบอร์โทรศัพท์', tracking=True)
     office_number = fields.Char(string='เบอร์สำนักงาน', tracking=True)
 
@@ -42,30 +43,32 @@ class VehicleManagement(models.Model):
 
     propose = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')],
                                string='เสนอ', tracking=True)
-    because = fields.Char(string='เพราะ', tracking=True)
+    because = fields.Text(string='เพราะ', tracking=True)
     department_head = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date01 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_02 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
                                   , string='เสนอ', tracking=True)
-    because_02 = fields.Char(string='เพราะ', tracking=True)
+    because_02 = fields.Text(string='เพราะ', tracking=True)
     office_director = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date02 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_03 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
                                   , string='เสนอ', tracking=True)
-    because_03 = fields.Char(string='เพราะ', tracking=True)
+    because_03 = fields.Text(string='เพราะ', tracking=True)
     vice_president = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date03 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_04 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ')], string='เสนอ', tracking=True)
-    because_04 = fields.Char(string='เพราะ', tracking=True)
+    because_04 = fields.Text(string='เพราะ', tracking=True)
     chancellor = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date04 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
+    history = fields.Integer(string="History")
+
     state = fields.Selection(
-        [('draft', 'ฉบับร่าง'), ('authorities', 'เจ้าหน้าที่'), ('department head', 'หัวหน้าฝ่าย'),
-         ('director', 'ผู้อำนวยการ'), ('vice president', 'รองอธิการบดี'),
+        [('draft', 'ฉบับร่าง'), ('authorities', 'เจ้าหน้าที่'), ('department_head', 'หัวหน้าฝ่าย'),
+         ('director', 'ผู้อำนวยการ'), ('vice_president', 'รองอธิการบดี'),
          ('chancellor', 'อธิการบดี'), ('cancel', 'ยกเลิก')],
         string='สถานะ', default='draft')
 
@@ -78,12 +81,6 @@ class VehicleManagement(models.Model):
 
     def action_authorities(self):
         self.state = 'authorities'
-
-    # def action_department(self):
-    #     self.state = 'department head'
-    #
-    # def action_draft(self):
-    #     self.state = 'draft'
 
     def action_cancel(self):
         self.state = 'cancel'
