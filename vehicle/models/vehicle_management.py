@@ -22,14 +22,14 @@ class VehicleManagement(models.Model):
     image_128 = fields.Image(related='model_id.image_128', readonly=True)
     location = fields.Text(string='สถานที่', tracking=True)
     distance = fields.Float(string='ระยะทางไป-กลับ', tracking=True)
-    budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statement', 'งบรายได้'), ('other', 'อื่นๆ')],
-                              string='ค่าน้ำมันเชื้อเพลิง', tracking=True)
+    budget = fields.Selection([('country_budget', 'งบประมาณแผ่นดิน'), ('statements', 'งบรายได้'), ('other', 'อื่นๆ')],
+                              string='ค่าน้ำมันเชื้อเพลิง', tracking=True, default='country_budget')
+    note = fields.Char(string='ระบุ', tracking=True)
     start_date = fields.Datetime(string='วันเวลาในการออกเดินทาง', tracking=True,
                                  default=datetime.now().strftime('%Y-%m-%d %H:%M'))
     end_date = fields.Datetime(string='วันเวลาในการเดินทางกลับ', tracking=True,
                                default=datetime.now().strftime('%Y-%m-%d %H:%M'))
     responsible = fields.Char(string='ผู้รับผิดชอบควบคุมในการใช้รถยนต์', tracking=True)
-    # note = fields.Char()
     phone_number = fields.Char(string='เบอร์โทรศัพท์', tracking=True)
     office_number = fields.Char(string='เบอร์สำนักงาน', tracking=True)
 
@@ -43,32 +43,30 @@ class VehicleManagement(models.Model):
 
     propose = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')],
                                string='เสนอ', tracking=True)
-    because = fields.Text(string='เพราะ', tracking=True)
+    because = fields.Char(string='เพราะ', tracking=True)
     department_head = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date01 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_02 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
                                   , string='เสนอ', tracking=True)
-    because_02 = fields.Text(string='เพราะ', tracking=True)
+    because_02 = fields.Char(string='เพราะ', tracking=True)
     office_director = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date02 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_03 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
                                   , string='เสนอ', tracking=True)
-    because_03 = fields.Text(string='เพราะ', tracking=True)
+    because_03 = fields.Char(string='เพราะ', tracking=True)
     vice_president = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date03 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
     propose_04 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ')], string='เสนอ', tracking=True)
-    because_04 = fields.Text(string='เพราะ', tracking=True)
+    because_04 = fields.Char(string='เพราะ', tracking=True)
     chancellor = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
     approve_date04 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), tracking=True)
 
-    history = fields.Integer(string="History")
-
     state = fields.Selection(
-        [('draft', 'ฉบับร่าง'), ('authorities', 'เจ้าหน้าที่'), ('department_head', 'หัวหน้าฝ่าย'),
-         ('director', 'ผู้อำนวยการ'), ('vice_president', 'รองอธิการบดี'),
+        [('draft', 'ฉบับร่าง'), ('authorities', 'เจ้าหน้าที่'), ('department head', 'หัวหน้าฝ่าย'),
+         ('director', 'ผู้อำนวยการ'), ('vice president', 'รองอธิการบดี'),
          ('chancellor', 'อธิการบดี'), ('cancel', 'ยกเลิก')],
         string='สถานะ', default='draft')
 
@@ -79,8 +77,44 @@ class VehicleManagement(models.Model):
         record = super(VehicleManagement, self).create(vals)
         return record
 
-    def action_authorities(self):
-        self.state = 'authorities'
+    def button_confirm(self):
+        for data in self:
+            data.write({
+                'approve_date': datetime.now().strftime('%Y-%m-%d'),
+                'state': 'authorities',
+            })
+            # ค้นหาข้อมุลจาก Class อื่น
+            # obj = self.env['fleet.vehicle']
+            # obj.search([เงื่อนไข])
+            # obj.xxxxx
 
-    def action_cancel(self):
+            # เขียนข้อมูลทับ
+            # obj.write({ชื่อฟิลด์: ค่าที่ต้องการ})
+
+            # ลย
+            # obj.unlink(id ของ obj)
+
+            # สร้าง
+            # obj = self.env['ชื่อคลาส']
+            # newobj = obj.create({ชื่อฟิลด์: ค่าที่ต้องการ})
+
+            # self.approve_date = datetime.now().strftime('%Y-%m-%d')
+            # self.state = 'authorities'
+
+    def button_authorities(self):
+        self.state = 'department head'
+
+    def button_department(self):
+        self.state = 'director'
+
+    def button_director(self):
+        self.state = 'vice president'
+
+    def button_president(self):
+        self.state = 'chancellor'
+
+    def button_chancellor(self):
+        self.state = ''
+
+    def button_cancel(self):
         self.state = 'cancel'
