@@ -69,6 +69,7 @@ class VehicleManagement(models.Model):
          ('director', 'ผู้อำนวยการ'), ('vice president', 'รองอธิการบดี'),
          ('chancellor', 'อธิการบดี'), ('cancel', 'ยกเลิก')],
         string='สถานะ', default='draft')
+    date = fields.Date(string='วันที่')
 
     @api.model
     def create(self, vals):

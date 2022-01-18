@@ -64,7 +64,7 @@
                                 <label for="distance"/>
                                 <div class="o_row" name="distance">
                                     <field name="distance"/>
-                                    <span>km</span>
+                                    <span>กิโลเมตร</span>
                                 </div>
                                 <field name="budget" widget="radio"/>
                                 <field name="note"
