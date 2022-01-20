@@ -12,7 +12,9 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
+        'report/report.xml',
         'data/sequence.xml',
+        'data/groups.xml',
         'views/vehicle_management_form.xml',
         'views/vehicle_management_tree.xml',
         'views/vehicle_management_kanban.xml',
