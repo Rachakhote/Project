@@ -91,19 +91,19 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:18%">
+                                    <td style="width:20%">
                                         <span>มีความประสงค์ขอใช้รถยนต์</span>
                                     </td>
-                                    <td style="width:15%">
+                                    <td style="width:20%">
                                         <strong t-field="doc.model_id"/>
                                     </td>
-                                    <td style="width:10%">
+                                    <td style="width:5%">
                                         <span>เพื่อ</span>
                                     </td>
-                                    <td style="width:15%">
+                                    <td style="width:8%">
                                         <strong t-field="doc.objective"/>
                                     </td>
-                                    <td style="width:8%">
+                                    <td style="width:6%">
                                         <span>สถานที่</span>
                                     </td>
                                     <td style="width:12%">
@@ -115,25 +115,25 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:20%">
+                                    <td style="width:22%">
                                         <span>มีอาจารย์ร่วมเดินทาง</span>
                                     </td>
                                     <td style="width:5%">
                                         <strong t-field="doc.teacher_number"/>
                                     </td>
-                                    <td style="width:10%">
+                                    <td style="width:5%">
                                         <span>คน</span>
                                     </td>
-                                    <td style="width:20%">
+                                    <td style="width:22%">
                                         <span>นักศึกษาร่วมเดินทาง</span>
                                     </td>
                                     <td style="width:8%">
                                         <strong t-field="doc.student_number"/>
                                     </td>
-                                    <td style="width:10%">
+                                    <td style="width:5%">
                                         <span>คน</span>
                                     </td>
-                                    <td style="width:15%">
+                                    <td style="width:17%">
                                         <span>ระยะทางไป-กลับ</span>
                                     </td>
                                     <td style="width:8%">
@@ -171,7 +171,8 @@
                                     </td>
                                     <td style="width:30%">
                                         <strong t-field="doc.budget"/>
-                                        <!--                                        options='{"widget": "random", "fields": ["budget_land", "statements", "other"], "other": True}'-->
+                                        <strong t-if="doc.budget=='other'" style="padding-left:30px;"
+                                                t-field="doc.note"/>
                                     </td>
                                 </tr>
                             </table>
@@ -308,16 +309,16 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:20%">
+                                    <td style="width:13%">
                                         <span>เพราะ</span>
                                     </td>
                                     <td style="width:25%">
                                         <strong t-field="doc.because"/>
                                     </td>
-                                    <td style="width:8%">
+                                    <td style="width:6%">
                                         <span>ลงชื่อ</span>
                                     </td>
-                                    <td style="width:15%">
+                                    <td style="width:12%">
                                         <strong t-field="doc.department_head"/>
                                     </td>
                                     <td style="width:16%">
@@ -326,7 +327,7 @@
                                 </tr>
                             </table>
                         </row>
-                        <div style="padding:0px 0px 0px 625px">
+                        <div style="padding:0px 0px 0px 605px">
                             <row>
                                 <tr>
                                     <td>
@@ -350,25 +351,25 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:22%">
+                                    <td style="width:15%">
                                         <span>เพราะ</span>
                                     </td>
                                     <td style="width:30%">
                                         <strong t-field="doc.because_02"/>
                                     </td>
-                                    <td style="width:8%">
+                                    <td style="width:7%">
                                         <span>ลงชื่อ</span>
                                     </td>
-                                    <td style="width:17%">
+                                    <td style="width:15%">
                                         <strong t-field="doc.office_director"/>
                                     </td>
-                                    <td style="width:25%">
+                                    <td style="width:20%">
                                         <span>ผู้อำนวยการสำนักงานอธิการบดี</span>
                                     </td>
                                 </tr>
                             </table>
                         </row>
-                        <div style="padding:0px 0px 0px 590px">
+                        <div style="padding:0px 0px 0px 595px">
                             <row>
                                 <tr>
                                     <td>
@@ -392,25 +393,25 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:20%">
+                                    <td style="width:12%">
                                         <span>เพราะ</span>
                                     </td>
-                                    <td style="width:25%">
+                                    <td style="width:22%">
                                         <strong t-field="doc.because_03"/>
                                     </td>
-                                    <td style="width:8%">
+                                    <td style="width:5%">
                                         <span>ลงชื่อ</span>
                                     </td>
-                                    <td style="width:15%">
+                                    <td style="width:10%">
                                         <strong t-field="doc.vice_president"/>
                                     </td>
-                                    <td style="width:16%">
+                                    <td style="width:15%">
                                         <span>รองอธิการบดีฝ่ายบริหาร</span>
                                     </td>
                                 </tr>
                             </table>
                         </row>
-                        <div style="padding:0px 0px 0px 625px">
+                        <div style="padding:0px 0px 0px 605px">
                             <row>
                                 <tr>
                                     <td>
@@ -434,16 +435,16 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:20%">
+                                    <td style="width:12%">
                                         <span>เพราะ</span>
                                     </td>
-                                    <td style="width:16%">
+                                    <td style="width:20%">
                                         <strong t-field="doc.because_04"/>
                                     </td>
-                                    <td style="width:6%">
+                                    <td style="width:5%">
                                         <span>ลงชื่อ</span>
                                     </td>
-                                    <td style="width:12%">
+                                    <td style="width:10%">
                                         <strong t-field="doc.chancellor"/>
                                     </td>
                                     <td style="width:20%">
@@ -452,7 +453,7 @@
                                 </tr>
                             </table>
                         </row>
-                        <div style="padding:0px 0px 0px 565px">
+                        <div style="padding:0px 0px 0px 550px">
                             <row>
                                 <tr>
                                     <td>
