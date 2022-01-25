@@ -11,14 +11,13 @@
                     <field name="name"/>
                     <field name="model_id"/>
                     <field name="driver_id"/>
-                    <field name="objective"/>
+                    <field name="objective" string="จุดประสงค์ในการขอใช้รถ"/>
                     <field name="location"/>
-                    <field name="budget"/>
+                    <field name="budget" string="งบประมาณ"/>
                     <field name="state" decoration-danger="state == 'cancel'"/>
-                    <field name="user_id"/>
+                    <field name="user_id" string="ผู้ขอใช้"/>
                 </tree>
             </field>
         </record>
-
     </data>
 </odoo>

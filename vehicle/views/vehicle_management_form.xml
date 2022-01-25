@@ -39,9 +39,9 @@
                             <field name="image_128" widget='image' class="oe_avatar"/>
                         </h1>
                         <div class="oe_title">
-                            <label for="model_id"/>
+                            <label for="model_id" string="Model"/>
                             <h2>
-                                <field name="model_id" placeholder="e.g. Model S"/>
+                                <field name="model_id" placeholder="เลือกประเภทรถ"/>
                             </h2>
                         </div>
                         <p/>
@@ -54,8 +54,16 @@
                                 <field name="location"/>
                             </group>
                             <group>
-                                <field name="teacher_number"/>
-                                <field name="student_number"/>
+                                <label for="teacher_number"/>
+                                <div class="o_row" name="teacher_number">
+                                    <field name="teacher_number"/>
+                                    <span>คน</span>
+                                </div>
+                                <label for="student_number"/>
+                                <div class="o_row" name="student_number">
+                                    <field name="student_number"/>
+                                    <span>คน</span>
+                                </div>
                                 <field name="responsible"/>
                                 <field name="phone_number"/>
                                 <field name="office_number"/>
@@ -121,7 +129,7 @@
 
         <!-- Actions Act Window ปุ่มต่างๆ Delete Duplicate -->
         <record model="ir.actions.act_window" id="management_action">
-            <field name="name">ระบบจองยานพาหนะ ออนไลน์</field>
+            <field name="name">Vehicle Management</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vehicle.management</field>
             <field name="view_mode">tree,kanban,calendar,pivot,form</field>

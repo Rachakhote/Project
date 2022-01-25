@@ -3,7 +3,7 @@
     <data>
 
         <record id="action_report_vehicle" model="ir.actions.report">
-            <field name="name">ใบจองรถ</field>
+            <field name="name">ปริ้นใบจองรถ</field>
             <field name="model">vehicle.management</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">vehicle.report_vehicle_management</field>
@@ -166,11 +166,12 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:30%">
-                                        <span>งบค่าน้ำมันเชื้อเพลิง</span>
+                                    <td style="width:10%">
+                                        <span>งบประมาณค่าน้ำมันเชื้อเพลิง</span>
                                     </td>
                                     <td style="width:30%">
-                                        <span t-field="doc.budget"/>
+                                        <strong t-field="doc.budget"/>
+                                        <!--                                        options='{"widget": "random", "fields": ["budget_land", "statements", "other"], "other": True}'-->
                                     </td>
                                 </tr>
                             </table>
@@ -200,7 +201,7 @@
                                         <td style="width:10%">
                                             <span>ลงชื่อ</span>
                                         </td>
-                                        <td style="width:15%">
+                                        <td style="width:17%">
                                             <strong t-field="doc.user_id"/>
                                         </td>
                                         <td style="width:10%">
@@ -231,21 +232,12 @@
                         <p/>
                         <hr/>
                         <strong>เจ้าหน้าที่ธุรการ</strong>
-                        <div style="padding:2px 0px 0px 30px">
+                        <div style="padding:2px 0px 0px 60px">
                             <row>
                                 <table>
                                     <tr>
-                                        <td style="width:25%">
-                                            <span>อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:25%">
-                                            <strong t-field="doc.phone_number"/>
-                                        </td>
-                                        <td style="width:30%">
-                                            <span>ไม่อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:10%">
-                                            <strong t-field="doc.office_number"/>
+                                        <td>
+                                            <strong t-field="doc.record"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -302,21 +294,12 @@
                             </row>
                         </div>
                         <strong>หัวหน้าฝ่ายยานพาหนะ</strong>
-                        <div style="padding:2px 0px 0px 30px">
+                        <div style="padding:2px 0px 0px 60px">
                             <row>
                                 <table>
                                     <tr>
-                                        <td style="width:25%">
-                                            <span>อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:25%">
-                                            <strong t-field="doc.phone_number"/>
-                                        </td>
-                                        <td style="width:30%">
-                                            <span>ไม่อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:10%">
-                                            <strong t-field="doc.office_number"/>
+                                        <td>
+                                            <strong t-field="doc.propose"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -353,21 +336,12 @@
                             </row>
                         </div>
                         <strong>ผู้อำนวยการสำนักงานอธิการบดี</strong>
-                        <div style="padding:2px 0px 0px 30px">
+                        <div style="padding:2px 0px 0px 60px">
                             <row>
                                 <table>
                                     <tr>
-                                        <td style="width:25%">
-                                            <span>อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:25%">
-                                            <strong t-field="doc.phone_number"/>
-                                        </td>
-                                        <td style="width:30%">
-                                            <span>ไม่อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:10%">
-                                            <strong t-field="doc.office_number"/>
+                                        <td>
+                                            <strong t-field="doc.propose_02"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -404,21 +378,12 @@
                             </row>
                         </div>
                         <strong>รองอธิการบดีฝ่ายบริหาร</strong>
-                        <div style="padding:2px 0px 0px 30px">
+                        <div style="padding:2px 0px 0px 60px">
                             <row>
                                 <table>
                                     <tr>
-                                        <td style="width:25%">
-                                            <span>อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:25%">
-                                            <strong t-field="doc.phone_number"/>
-                                        </td>
-                                        <td style="width:30%">
-                                            <span>ไม่อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:10%">
-                                            <strong t-field="doc.office_number"/>
+                                        <td>
+                                            <strong t-field="doc.propose_03"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -455,21 +420,12 @@
                             </row>
                         </div>
                         <strong>อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์</strong>
-                        <div style="padding:2px 0px 0px 30px">
+                        <div style="padding:2px 0px 0px 60px">
                             <row>
                                 <table>
                                     <tr>
-                                        <td style="width:25%">
-                                            <span>อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:25%">
-                                            <strong t-field="doc.phone_number"/>
-                                        </td>
-                                        <td style="width:30%">
-                                            <span>ไม่อนุุมัติ</span>
-                                        </td>
-                                        <td style="width:10%">
-                                            <strong t-field="doc.office_number"/>
+                                        <td>
+                                            <strong t-field="doc.propose_04"/>
                                         </td>
                                     </tr>
                                 </table>
