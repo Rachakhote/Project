@@ -132,7 +132,7 @@
             <field name="name">Vehicle Management</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vehicle.management</field>
-            <field name="view_mode">tree,kanban,calendar,pivot,form</field>
+            <field name="view_mode">tree,kanban,calendar,form</field>
         </record>
 
         <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->

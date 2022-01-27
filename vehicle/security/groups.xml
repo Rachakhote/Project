@@ -3,27 +3,27 @@
     <data>
 
         <record id="group_vehicle_chancellor" model="res.groups">
-            <field name="name">อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์</field>
+            <field name="name">Chancellor</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
 
         <record id="group_vehicle_vice_president" model="res.groups">
-            <field name="name">รองอธิการบดีฝ่ายบริหาร</field>
+            <field name="name">President</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
 
         <record id="group_vehicle_director" model="res.groups">
-            <field name="name">ผู้อำนวยการสำนักงานอธิการบดี</field>
+            <field name="name">Director</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
 
         <record id="group_vehicle_department_head" model="res.groups">
-            <field name="name">หัวหน้าฝ่ายยานพาหนะ</field>
+            <field name="name">Department Head</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
 
         <record id="group_vehicle_authorities" model="res.groups">
-            <field name="name">เจ้าหน้าที่ธุรการ</field>
+            <field name="name">Authorities</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
 

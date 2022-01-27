@@ -27,42 +27,21 @@
             <t t-set="doc"/>
             <t t-call="web.external_layout">
                 <t t-foreach="docs" t-as="doc">
-                    <center>
+                    <center style="margin-top:0px;">
                         <image>
-                            <img src="vehicle/static/src/logo-bru.png" alt="" width="120px"/>
+                            <img src="vehicle/static/src/logo-bru.png" alt="" width="140px"/>
                         </image>
                     </center>
                     <div class="page">
-                        <center style="padding:10px">
-                            <h2>แบบฟอร์มบันทึกการขอใช้ยานพาหนะราชการ</h2>
-                            <h4>มหาวิทยาลัยราชภัฏบุรีรัมย์</h4>
+                        <center style="padding:20px">
+                            <h2>
+                                <b>แบบฟอร์มบันทึกการขอใช้ยานพาหนะราชการ</b>
+                            </h2>
+                            <h4>
+                                <b>มหาวิทยาลัยราชภัฏบุรีรัมย์</b>
+                            </h4>
                         </center>
-                        <p/>
-                        <row>
-                            <table style="width:40%">
-                                <tr>
-                                    <td>
-                                        <strong>เรื่อง</strong>
-                                    </td>
-                                    <td>
-                                        <span>ขออนุญาติใช้รถยนต์ไปราชการ</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </row>
-                        <row>
-                            <table style="width:40%">
-                                <tr>
-                                    <td>
-                                        <strong>เรียน</strong>
-                                    </td>
-                                    <td>
-                                        <span>อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </row>
-                        <div style="padding:5px 0px 0px 100px">
+                        <div style="padding:0px 0px 0px 100px">
                             <row>
                                 <table>
                                     <tr>
@@ -91,16 +70,16 @@
                         <row>
                             <table>
                                 <tr>
-                                    <td style="width:20%">
+                                    <td style="width:15%">
                                         <span>มีความประสงค์ขอใช้รถยนต์</span>
                                     </td>
-                                    <td style="width:20%">
+                                    <td style="width:14%">
                                         <strong t-field="doc.model_id"/>
                                     </td>
                                     <td style="width:5%">
                                         <span>เพื่อ</span>
                                     </td>
-                                    <td style="width:8%">
+                                    <td style="width:13%">
                                         <strong t-field="doc.objective"/>
                                     </td>
                                     <td style="width:6%">
@@ -192,10 +171,8 @@
                                 </tr>
                             </table>
                         </row>
-                        <p style="padding:5px 0px 0px 100px">
-                            <span>จึงเรียนมาเพื่อโปรดพิจารณา</span>
-                        </p>
-                        <div style="padding:2px 0px 0px 555px">
+
+                        <div style="padding:6px 0px 0px 570px">
                             <row>
                                 <table>
                                     <tr>
@@ -212,24 +189,26 @@
                                 </table>
                             </row>
                         </div>
-                        <row>
-                            <table>
-                                <tr>
-                                    <td style="width:25%">
-                                        <span>เบอร์โทรศัพท์</span>
-                                    </td>
-                                    <td style="width:25%">
-                                        <strong t-field="doc.phone_number"/>
-                                    </td>
-                                    <td style="width:30%">
-                                        <span>เบอร์สำนักงาน</span>
-                                    </td>
-                                    <td style="width:10%">
-                                        <strong t-field="doc.office_number"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </row>
+                        <div style="padding:0px 0px 0px 550px">
+                            <row>
+                                <table>
+                                    <tr>
+                                        <td style="width:25%">
+                                            <span>เบอร์โทรศัพท์</span>
+                                        </td>
+                                        <td style="width:25%">
+                                            <strong t-field="doc.phone_number"/>
+                                        </td>
+                                        <td style="width:25%">
+                                            <span>เบอร์สำนักงาน</span>
+                                        </td>
+                                        <td style="width:10%">
+                                            <strong t-field="doc.office_number"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </row>
+                        </div>
                         <p/>
                         <hr/>
                         <strong>เจ้าหน้าที่ธุรการ</strong>

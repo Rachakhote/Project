@@ -11,7 +11,7 @@ class VehicleManagement(models.Model):
     _inherit = 'mail.thread', 'mail.activity.mixin'
 
     name = fields.Char(string='หมายเลข', tracking=True, default='NEW', readonly=True)
-    user_id = fields.Many2one('res.users', string='ผู้ขอใช้', required=True, tracking=True,
+    user_id = fields.Many2one('res.users', string='ผู้ขอใช้', readonly=True, tracking=True,
                               default=lambda self: self.env.company)
     position = fields.Char(string='ตำแหน่ง', tracking=True)
     agency = fields.Char(string='หน่วยงาน', tracking=True)
@@ -38,41 +38,43 @@ class VehicleManagement(models.Model):
 
     record = fields.Selection(
         [('approve', 'เห็นควรอนุมัติ'), ('disapproved', 'ไม่เห็นควรอนุมัติ'), ('consider', 'โปรดพิจารณา')],
-        string='บันทึก', tracking=True)
+        string='บันทึก', tracking=True, default='approve')
     driver_id = fields.Many2one('res.users', string='พนักงานขับรถ', tracking=True)
     attendant = fields.Char(string='พนักงานประจำรถ', tracking=True)
-    authorities = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
+    authorities = fields.Many2one('res.users', string='ลงชื่อ', tracking=True, readonly=True,
+                                  default=lambda self: self.env.company)
     approve_date = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), readonly=True)
 
     # หัวหน้าฝ่ายยานพาหนะ
 
     propose = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')],
-                               string='เสนอ', tracking=True)
+                               string='เสนอ', tracking=True, default='approve')
     because = fields.Char(string='เพราะ', tracking=True)
-    department_head = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
+    department_head = fields.Many2one('res.users', string='ลงชื่อ', tracking=True, readonly=True)
     approve_date01 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), readonly=True)
 
     # ผู้อำนวยการสำนักงานอธิการบดี
 
     propose_02 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
-                                  , string='เสนอ', tracking=True)
+                                  , string='เสนอ', tracking=True, default='approve')
     because_02 = fields.Char(string='เพราะ', tracking=True)
-    office_director = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
+    office_director = fields.Many2one('res.users', string='ลงชื่อ', tracking=True, readonly=True)
     approve_date02 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), readonly=True)
 
     # รองอธิการบดีฝ่ายบริหาร
 
     propose_03 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ'), ('consider', 'โปรดพิจารณา')]
-                                  , string='เสนอ', tracking=True)
+                                  , string='เสนอ', tracking=True, default='approve')
     because_03 = fields.Char(string='เพราะ', tracking=True)
-    vice_president = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
+    vice_president = fields.Many2one('res.users', string='ลงชื่อ', tracking=True, readonly=True)
     approve_date03 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), readonly=True)
 
     # อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์
 
-    propose_04 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ')], string='เสนอ', tracking=True)
+    propose_04 = fields.Selection([('approve', 'อนุมัติ'), ('disapproved', 'ไม่อนุมัติ')], string='เสนอ', tracking=True,
+                                  default='approve')
     because_04 = fields.Char(string='เพราะ', tracking=True)
-    chancellor = fields.Many2one('res.users', string='ลงชื่อ', tracking=True)
+    chancellor = fields.Many2one('res.users', string='ลงชื่อ', tracking=True, readonly=True)
     approve_date04 = fields.Date(string='วันที่อนุมัติ', default=fields.Date.today(), readonly=True)
 
     state = fields.Selection(
