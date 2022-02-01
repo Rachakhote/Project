@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--   View Calendar   -->
+        <record id="vehicle_view_calendar" model="ir.ui.view">
+            <field name="name">Vehicle Reservation Calendar</field>
+            <field name="model">vehicle.reservation</field>
+            <field name="arch" type="xml">
+                <calendar date_start="start_date" date_stop="end_date" color="state" mode="month" quick_add="False">
+                    <field name="model_id"/>
+                    <field name="objective"/>
+                    <field name="user_id"/>
+                </calendar>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--   View Search   -->
+        <record id="vehicle_view_search" model="ir.ui.view">
+            <field name="name">Vehicle Reservation Search</field>
+            <field name="model">vehicle.reservation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Number"/>
+                    <field name="objective" string="Objective"/>
+                    <field name="location" string="Location"/>
+                    <separator/>
+                    <filter string="ฉบับร่าง" name="ฉบับร่าง" domain="[('state', '=', 'draft')]"/>
+                    <filter string="เจ้าหน้าที่" name="เจ้าหน้าที่" domain="[('state', '=', 'authorities')]"/>
+                    <filter string="หัวหน้าฝ่าย" name="หัวหน้าฝ่าย" domain="[('state', '=', 'department')]"/>
+                    <filter string="ผู้อำนวยการ" name="ผู้อำนวยการ" domain="[('state', '=', 'director')]"/>
+                    <filter string="รองอธิการบดี" name="รองอธิการบดี" domain="[('state', '=', 'president')]"/>
+                    <filter string="อธิการบดี" name="อธิการบดี" domain="[('state', '=', 'chancellor')]"/>
+                    <filter string="ยกเลิก" name="ยกเลิก" domain="[('state', '=', 'cancel')]"/>
+                    <group expand="1" string="Group By">
+                        <filter name="model_id" string="Model" context="{'group_by': 'model_id'}"/>
+                        <filter name="driver_id" string="Driver" context="{'group_by':'driver_id'}"/>
+                        <filter name="user_id" string="User" context="{'group_by':'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>
