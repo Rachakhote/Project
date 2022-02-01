@@ -7,9 +7,9 @@
             <field name="model">vehicle.reservation</field>
             <field name="arch" type="xml">
                 <calendar date_start="start_date" date_stop="end_date" color="state" mode="month" quick_add="False">
-                    <field name="model_id"/>
-                    <field name="objective"/>
-                    <field name="user_id"/>
+                    <field name="model_id" string="Model"/>
+                    <field name="objective" string="Objective"/>
+                    <field name="user_id" string="User" avatar_field="avatar_128"/>
                 </calendar>
             </field>
         </record>

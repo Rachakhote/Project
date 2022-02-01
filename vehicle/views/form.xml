@@ -7,7 +7,8 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="button_confirm" string="ยืนยันเอกสาร" states="draft" class="btn-primary" type="object"/>
+                        <button name="button_confirm" string="ยืนยันเอกสาร" states="draft" class="btn-primary" type="object"
+                                attrs="{'invisible' : ['|', '|', ('id', '=', False),('state', '!=', 'draft')]}"/>
                         <button name="button_authorities" string="ส่งให้หัวหน้าอนุมัติ" states="authorities"
                                 class="btn-primary" type="object"/>
                         <button name="button_department" string="ส่งให้ผู้อำนวยการอนุมัติ" states="department"
@@ -19,7 +20,8 @@
                         <button name="button_chancellor" string="ยืนยัน" states="chancellor" class="btn-primary"
                                 type="object"/>
                         <button name="button_cancel" states="draft,authorities,department,director,president,chancellor"
-                                string="ยกเลิก" type="object"/>
+                                string="ยกเลิก" type="object"
+                                attrs="{'invisible' : ['|', '|', ('id', '=', False),('state', '!=', 'draft')]}"/>
                         <field name="state" widget="statusbar"
                                statusbar_visible="draft,authorities,department,director,president,chancellor"/>
                     </header>

@@ -17,18 +17,18 @@
                                 <div class="o_kanban_image"
                                      t-attf-style="background-image:url('#{kanban_image('vehicle.reservation', 'image_128', record.id.raw_value)}')"/>
                                 <div class="oe_kanban_details">
-                                    <strong class="o_kanban_record_title">
+                                    <strong>
                                         <field name="model_id"/>
                                     </strong>
                                     <ul>
-                                        <il>
+                                        <strong>
                                             <field name="objective"/>
-                                        </il>
+                                        </strong>
                                     </ul>
                                     <ul>
-                                        <il>
+                                        <strong>
                                             <field name="user_id"/>
-                                        </il>
+                                        </strong>
                                     </ul>
                                 </div>
                             </div>

@@ -7,14 +7,17 @@
             <field name="model">vehicle.reservation</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name" string="Number"/>
-                    <field name="model_id" string="Model"/>
+                    <field name="name" string="No"/>
+                    <field name="model_id" string="Model" widget="many2one_avatar"/>
                     <field name="driver_id" string="Driver"/>
                     <field name="objective" string="Objective"/>
                     <field name="location" string="Location"/>
-                    <field name="budget" string="Budget"/>
-                    <field name="state" decoration-danger="state == 'cancel'" string="State"/>
-                    <field name="user_id" string="User"/>
+                    <field name="state"
+                           decoration-info="state == 'draft' or state == 'authorities' or state == 'department'
+                           or state == 'director' or state == 'president'"
+                           decoration-success="state == 'chancellor'" decoration-danger="state == 'cancel'"
+                           widget="badge" optional="show" string="State"/>
+                    <field name="user_id" widget="many2one_avatar_user" optional="show" string="User"/>
                 </tree>
             </field>
         </record>

@@ -7,7 +7,7 @@
             <field name="model">vehicle.reservation</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name" string="Number"/>
+                    <field name="name" string="No"/>
                     <field name="objective" string="Objective"/>
                     <field name="location" string="Location"/>
                     <separator/>
