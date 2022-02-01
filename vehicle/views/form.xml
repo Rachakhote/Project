@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="vehicle_view_form" model="ir.ui.view">
+            <field name="name">Vehicle Reservation Form</field>
+            <field name="model">vehicle.reservation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_confirm" string="ยืนยันเอกสาร" states="draft" class="btn-primary" type="object"/>
+                        <button name="button_authorities" string="ส่งให้หัวหน้าอนุมัติ" states="authorities"
+                                class="btn-primary" type="object"/>
+                        <button name="button_department" string="ส่งให้ผู้อำนวยการอนุมัติ" states="department"
+                                class="btn-primary" type="object"/>
+                        <button name="button_director" string="ส่งให้รองอธิการอนุมัติ" states="director" class="btn-primary"
+                                type="object"/>
+                        <button name="button_president" string="ส่งให้อธิการอนุมัติ" states="president" class="btn-primary"
+                                type="object"/>
+                        <button name="button_chancellor" string="ยืนยัน" states="chancellor" class="btn-primary"
+                                type="object"/>
+                        <button name="button_cancel" states="draft,authorities,department,director,president,chancellor"
+                                string="ยกเลิก" type="object"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,authorities,department,director,president,chancellor"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                            <field name="image_128" widget="image" class="oe_avatar"/>
+                        </h1>
+                        <div class="oe_title">
+                            <label for="model_id" string="Model"/>
+                            <h2>
+                                <field name="model_id" placeholder="เลือกประเภทรถ"/>
+                            </h2>
+                        </div>
+                        <p/>
+                        <group>
+                            <group>
+                                <field name="user_id" string="ผู้ขอใช้"/>
+                                <field name="position"/>
+                                <field name="agency"/>
+                                <field name="objective"/>
+                                <field name="location"/>
+                            </group>
+                            <group>
+                                <label for="teacher_n"/>
+                                <div class="o_row" name="teacher_n">
+                                    <field name="teacher_n"/>
+                                    <span>คน</span>
+                                </div>
+                                <label for="student_n"/>
+                                <div class="o_row" name="student_n">
+                                    <field name="student_n"/>
+                                    <span>คน</span>
+                                </div>
+                                <field name="responsible"/>
+                                <field name="phone_number"/>
+                                <field name="office_number"/>
+                            </group>
+                            <group>
+                                <label for="distance"/>
+                                <div class="o_row" name="distance">
+                                    <field name="distance"/>
+                                    <span>กิโลเมตร</span>
+                                </div>
+                                <field name="budget" widget="radio"/>
+                                <field name="specify"
+                                       attrs="{'invisible': [('budget','!=','other')], 'required': [('budget','=','other')]}"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group col="2" string="เจ้าหน้าที่ธุรการ" groups="vehicle.group_authorities">
+                                <field name="record" widget="radio"/>
+                                <field name="driver_id"/>
+                                <field name="attendant"/>
+                                <field name="authorities"/>
+                                <field name="approve_date"/>
+                            </group>
+                            <group col="2" string="หัวหน้าฝ่ายยานพาหนะ" groups="vehicle.group_department">
+                                <field name="propose" widget="radio"/>
+                                <field name="because"/>
+                                <field name="head"/>
+                                <field name="approve_date_head"/>
+                            </group>
+                            <group col="2" string="ผู้อำนวยการสำนักงานอธิการบดี" groups="vehicle.group_director">
+                                <field name="propose_director" widget="radio"/>
+                                <field name="because_director"/>
+                                <field name="director"/>
+                                <field name="approve_date_director"/>
+                            </group>
+                            <group col="2" string="รองอธิการบดีฝ่ายบริหาร" groups="vehicle.group_president">
+                                <field name="propose_secondary" widget="radio"/>
+                                <field name="because_secondary"/>
+                                <field name="president"/>
+                                <field name="approve_date_secondary"/>
+                            </group>
+                            <group col="2" string="อธิการบดีมหาวิทยาลัยราชภัฏบุรีรัมย์"
+                                   groups="vehicle.group_chancellor">
+                                <field name="propose_chancellor" widget="radio"/>
+                                <field name="because_chancellor"/>
+                                <field name="chancellor"/>
+                                <field name="approve_date_chancellor"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!--    Actions Act Window ปุ่มต่างๆ Delete Duplicate    -->
+        <record model="ir.actions.act_window" id="vehicle_action">
+            <field name="name">Vehicle Reservation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vehicle.reservation</field>
+            <field name="view_mode">tree,kanban,calendar,form</field>
+        </record>
+        <!--    This Menu Item will appear in the Upper bar, That's why It needs NO parent or action    -->
+        <menuitem id="vehicle_root" name="Vehicle" action="vehicle_action" sequence="10"/>
+    </data>
+</odoo>

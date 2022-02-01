@@ -1,7 +1,8 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_vehicle_management,access.vehicle.management,model_vehicle_management,,1,1,1,1
-access_authorities,access.vehicle.management,model_vehicle_management,group_vehicle_authorities,1,1,1,1
-access_department_head,access.vehicle.management,model_vehicle_management,group_vehicle_department_head,1,1,1,1
-access_director,access.vehicle.management,model_vehicle_management,group_vehicle_director,1,1,1,1
-access_president,access.vehicle.management,model_vehicle_management,group_vehicle_vice_president,1,1,1,1
-access_chancellor,access.vehicle.management,model_vehicle_management,group_vehicle_chancellor,1,1,1,1
+access_vehicle_reservation,access.vehicle.reservation,model_vehicle_reservation,,1,1,1,1
+access_user,access.user,model_vehicle_reservation,group_user,0,0,0,0
+access_authorities,access.authorities,model_vehicle_reservation,group_authorities,1,0,0,0
+access_department,access.department,model_vehicle_reservation,group_department,1,0,0,0
+access_director,access.director,model_vehicle_reservation,group_director,1,0,0,0
+access_president,access.president,model_vehicle_reservation,group_president,1,0,0,0
+access_chancellor,access.chancellor,model_vehicle_reservation,group_chancellor,1,0,0,0

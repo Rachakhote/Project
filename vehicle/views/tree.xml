@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
-        <!-- View Tree -->
-        <record id="view_management_tree" model="ir.ui.view">
-            <field name="name">vehicle.management.tree</field>
-            <field name="model">vehicle.management</field>
+        <!--   View Tree   -->
+        <record id="vehicle_view_tree" model="ir.ui.view">
+            <field name="name">Vehicle Reservation Tree</field>
+            <field name="model">vehicle.reservation</field>
             <field name="arch" type="xml">
-                <tree string="Vehicle Management Tree">
+                <tree>
                     <field name="name" string="Number"/>
                     <field name="model_id" string="Model"/>
                     <field name="driver_id" string="Driver"/>

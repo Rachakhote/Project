@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record id="action_report_vehicle" model="ir.actions.report">
             <field name="name">ปริ้นใบจองรถ</field>
-            <field name="model">vehicle.management</field>
+            <field name="model">vehicle.reservation</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">vehicle.report_vehicle_management</field>
-            <field name="report_file">vehicle.report_vehicle_management</field>
-            <field name="binding_model_id" ref="model_vehicle_management"/>
+            <field name="report_name">vehicle.report_vehicle_reservation</field>
+            <field name="report_file">vehicle.report_vehicle_reservation</field>
+            <field name="binding_model_id" ref="model_vehicle_reservation"/>
             <field name="binding_type">report</field>
         </record>
-
-        <!-- Main template -->
-        <template id="report_vehicle_management">
+        <!--  Main template  -->
+        <template id="report_vehicle_reservation">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="vehicle.report_vehicle_management_document"/>
+                    <t t-call="vehicle.report_vehicle_reservation_document"/>
                 </t>
             </t>
         </template>
-
-        <!-- Translatable template -->
-        <template id="report_vehicle_management_document">
-            <!-- Re-browse of the record with the partner lang -->
+        <!--  Translatable template  -->
+        <template id="report_vehicle_reservation_document">
+            <!--  Re-browse of the record with the partner lang  -->
             <t t-set="doc"/>
             <t t-call="web.external_layout">
                 <t t-foreach="docs" t-as="doc">
@@ -98,7 +95,7 @@
                                         <span>มีอาจารย์ร่วมเดินทาง</span>
                                     </td>
                                     <td style="width:5%">
-                                        <strong t-field="doc.teacher_number"/>
+                                        <strong t-field="doc.teacher_n"/>
                                     </td>
                                     <td style="width:5%">
                                         <span>คน</span>
@@ -107,7 +104,7 @@
                                         <span>นักศึกษาร่วมเดินทาง</span>
                                     </td>
                                     <td style="width:8%">
-                                        <strong t-field="doc.student_number"/>
+                                        <strong t-field="doc.student_n"/>
                                     </td>
                                     <td style="width:5%">
                                         <span>คน</span>
@@ -151,7 +148,7 @@
                                     <td style="width:30%">
                                         <strong t-field="doc.budget"/>
                                         <strong t-if="doc.budget=='other'" style="padding-left:30px;"
-                                                t-field="doc.note"/>
+                                                t-field="doc.specify"/>
                                     </td>
                                 </tr>
                             </table>
@@ -171,7 +168,6 @@
                                 </tr>
                             </table>
                         </row>
-
                         <div style="padding:6px 0px 0px 570px">
                             <row>
                                 <table>
@@ -298,7 +294,7 @@
                                         <span>ลงชื่อ</span>
                                     </td>
                                     <td style="width:12%">
-                                        <strong t-field="doc.department_head"/>
+                                        <strong t-field="doc.head"/>
                                     </td>
                                     <td style="width:16%">
                                         <span>หัวหน้าฝ่ายยานพาหนะ</span>
@@ -310,7 +306,7 @@
                             <row>
                                 <tr>
                                     <td>
-                                        <strong t-field="doc.approve_date01"/>
+                                        <strong t-field="doc.approve_date_head"/>
                                     </td>
                                 </tr>
                             </row>
@@ -321,7 +317,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <strong t-field="doc.propose_02"/>
+                                            <strong t-field="doc.propose_director"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -334,13 +330,13 @@
                                         <span>เพราะ</span>
                                     </td>
                                     <td style="width:30%">
-                                        <strong t-field="doc.because_02"/>
+                                        <strong t-field="doc.because_director"/>
                                     </td>
                                     <td style="width:7%">
                                         <span>ลงชื่อ</span>
                                     </td>
                                     <td style="width:15%">
-                                        <strong t-field="doc.office_director"/>
+                                        <strong t-field="doc.director"/>
                                     </td>
                                     <td style="width:20%">
                                         <span>ผู้อำนวยการสำนักงานอธิการบดี</span>
@@ -352,7 +348,7 @@
                             <row>
                                 <tr>
                                     <td>
-                                        <strong t-field="doc.approve_date02"/>
+                                        <strong t-field="doc.approve_date_director"/>
                                     </td>
                                 </tr>
                             </row>
@@ -363,7 +359,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <strong t-field="doc.propose_03"/>
+                                            <strong t-field="doc.propose_secondary"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -376,13 +372,13 @@
                                         <span>เพราะ</span>
                                     </td>
                                     <td style="width:22%">
-                                        <strong t-field="doc.because_03"/>
+                                        <strong t-field="doc.because_secondary"/>
                                     </td>
                                     <td style="width:5%">
                                         <span>ลงชื่อ</span>
                                     </td>
                                     <td style="width:10%">
-                                        <strong t-field="doc.vice_president"/>
+                                        <strong t-field="doc.president"/>
                                     </td>
                                     <td style="width:15%">
                                         <span>รองอธิการบดีฝ่ายบริหาร</span>
@@ -394,7 +390,7 @@
                             <row>
                                 <tr>
                                     <td>
-                                        <strong t-field="doc.approve_date03"/>
+                                        <strong t-field="doc.approve_date_secondary"/>
                                     </td>
                                 </tr>
                             </row>
@@ -405,7 +401,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <strong t-field="doc.propose_04"/>
+                                            <strong t-field="doc.propose_chancellor"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -418,7 +414,7 @@
                                         <span>เพราะ</span>
                                     </td>
                                     <td style="width:20%">
-                                        <strong t-field="doc.because_04"/>
+                                        <strong t-field="doc.because_chancellor"/>
                                     </td>
                                     <td style="width:5%">
                                         <span>ลงชื่อ</span>
@@ -436,7 +432,7 @@
                             <row>
                                 <tr>
                                     <td>
-                                        <strong t-field="doc.approve_date04"/>
+                                        <strong t-field="doc.approve_date_chancellor"/>
                                     </td>
                                 </tr>
                             </row>
@@ -445,6 +441,5 @@
                 </t>
             </t>
         </template>
-
     </data>
 </odoo>

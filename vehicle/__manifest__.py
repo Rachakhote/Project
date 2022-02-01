@@ -13,17 +13,17 @@
     'data': [
         'security/ir.model.access.csv',
         'security/groups.xml',
-        'report/report.xml',
         'data/sequence.xml',
-        'views/vehicle_management_form.xml',
-        'views/vehicle_management_tree.xml',
-        'views/vehicle_management_kanban.xml',
-        'views/vehicle_management_calendar.xml',
-        'views/vehicle_management_search.xml'
+        'report/report.xml',
+        'views/form.xml',
+        'views/tree.xml',
+        'views/kanban.xml',
+        'views/calendar.xml',
+        'views/search.xml'
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
-        # 'demo/demo_data.xml',
     ],
-    'application': True,
+    'application': True
 }
+

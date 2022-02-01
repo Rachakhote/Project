@@ -2,33 +2,32 @@
 <odoo>
     <data>
 
-        <record id="group_vehicle_chancellor" model="res.groups">
+        <record id="group_user" model="res.groups">
+            <field name="name">User</field>
+        </record>
+
+        <record id="group_chancellor" model="res.groups">
             <field name="name">Chancellor</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
-
-        <record id="group_vehicle_vice_president" model="res.groups">
+        <record id="group_president" model="res.groups">
             <field name="name">President</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
-
-        <record id="group_vehicle_director" model="res.groups">
+        <record id="group_director" model="res.groups">
             <field name="name">Director</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
-
-        <record id="group_vehicle_department_head" model="res.groups">
+        <record id="group_department" model="res.groups">
             <field name="name">Department Head</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
-
-        <record id="group_vehicle_authorities" model="res.groups">
+        <record id="group_authorities" model="res.groups">
             <field name="name">Authorities</field>
             <field name="category_id" ref="module_category_vehicle"/>
         </record>
-
         <record model="ir.module.category" id="module_category_vehicle">
-            <field name="name">Vehicle Management</field>
+            <field name="name">Vehicle Reservation</field>
             <field name="description">Category For Vehicle</field>
         </record>
 
