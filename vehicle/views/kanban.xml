@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+        <!-- Modules Categories -->
+        <record id="view_module_category_form" model="ir.ui.view">
+            <field name="name">ir.module.category.form</field>
+            <field name="model">vehicle.reservation</field>
+            <field name="arch" type="xml">
+                <form string="Module Category">
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+                    <field name="state"/>
+                </form>
+            </field>
+        </record>
+
         <!--   View Kanban   -->
         <record id="vehicle_view_kanban" model="ir.ui.view">
             <field name="name">Vehicle Reservation Kanban</field>
             <field name="model">vehicle.reservation</field>
             <field name="arch" type="xml">
-                <kanban>
+                <kanban create="false" class="o_modules_kanban">
                     <field name="id"/>
                     <field name="model_id"/>
                     <field name="objective"/>
@@ -17,18 +32,31 @@
                                 <div class="o_kanban_image"
                                      t-attf-style="background-image:url('#{kanban_image('vehicle.reservation', 'image_128', record.id.raw_value)}')"/>
                                 <div class="oe_kanban_details">
-                                    <strong>
-                                        <field name="model_id"/>
-                                    </strong>
                                     <ul>
-                                        <strong>
-                                            <field name="objective"/>
-                                        </strong>
+                                        <span class="o_kanban_record_title">
+                                            <field name="model_id"/>
+                                        </span>
                                     </ul>
                                     <ul>
-                                        <strong>
-                                            <field name="user_id"/>
-                                        </strong>
+                                        <span>
+                                            <field name="objective"/>
+                                        </span>
+                                    </ul>
+                                    <ul>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <field name="user_id"/>
+                                                    </strong>
+                                                </td>
+                                                <td style="width:10%">
+                                                    <span>
+                                                        <field name="user_id" widget="many2one_avatar_user"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </ul>
                                 </div>
                             </div>

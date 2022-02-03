@@ -10,7 +10,7 @@ class VehicleReservation(models.Model):
     _inherit = 'mail.thread', 'mail.activity.mixin'
 
     name = fields.Char(string='No', tracking=True, default='NEW', readonly=True)
-    user_id = fields.Many2one('res.users', string='User', readonly=True, tracking=True,
+    user_id = fields.Many2one('res.users', string='User', tracking=True,
                               default=lambda self: self.env.company)
     position = fields.Char(string='ตำแหน่ง', tracking=True)
     agency = fields.Char(string='หน่วยงาน', tracking=True)

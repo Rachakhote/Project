@@ -116,7 +116,7 @@
         </record>
         <!--    Actions Act Window ปุ่มต่างๆ Delete Duplicate    -->
         <record model="ir.actions.act_window" id="vehicle_action">
-            <field name="name">Vehicle Reservation</field>
+            <field name="name">Vehicle Reservation System</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">vehicle.reservation</field>
             <field name="view_mode">tree,kanban,calendar,form</field>

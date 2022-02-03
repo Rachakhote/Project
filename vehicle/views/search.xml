@@ -11,18 +11,14 @@
                     <field name="objective" string="Objective"/>
                     <field name="location" string="Location"/>
                     <separator/>
-                    <filter string="ฉบับร่าง" name="ฉบับร่าง" domain="[('state', '=', 'draft')]"/>
-                    <filter string="เจ้าหน้าที่" name="เจ้าหน้าที่" domain="[('state', '=', 'authorities')]"/>
-                    <filter string="หัวหน้าฝ่าย" name="หัวหน้าฝ่าย" domain="[('state', '=', 'department')]"/>
-                    <filter string="ผู้อำนวยการ" name="ผู้อำนวยการ" domain="[('state', '=', 'director')]"/>
-                    <filter string="รองอธิการบดี" name="รองอธิการบดี" domain="[('state', '=', 'president')]"/>
-                    <filter string="อธิการบดี" name="อธิการบดี" domain="[('state', '=', 'chancellor')]"/>
-                    <filter string="ยกเลิก" name="ยกเลิก" domain="[('state', '=', 'cancel')]"/>
                     <group expand="1" string="Group By">
                         <filter name="model_id" string="Model" context="{'group_by': 'model_id'}"/>
                         <filter name="driver_id" string="Driver" context="{'group_by':'driver_id'}"/>
                         <filter name="user_id" string="User" context="{'group_by':'user_id'}"/>
                     </group>
+                    <searchpanel>
+                        <field name="state" icon="fa-users" enable_counters="1"/>
+                    </searchpanel>
                 </search>
             </field>
         </record>
