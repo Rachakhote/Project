@@ -17,7 +17,7 @@
                         <filter name="user_id" string="User" context="{'group_by':'user_id'}"/>
                     </group>
                     <searchpanel>
-                        <field name="state" icon="fa-users" enable_counters="1"/>
+                        <field name="state" icon="fa-users" enable_counters="1" string="Status"/>
                     </searchpanel>
                 </search>
             </field>
